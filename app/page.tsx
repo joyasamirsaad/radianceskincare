@@ -6,102 +6,6 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 
 export default function Homepage() {
-      // Form state
-      const [name, setName] = useState("");
-      const [email, setEmail] = useState("");
-      const [subject, setSubject] = useState("");
-      const [message, setMessage] = useState("");
-  
-      // Error state
-      const [nameError, setNameError] = useState("");
-      const [emailError, setEmailError] = useState("");
-      const [subjectError, setSubjectError] = useState("");
-      const [messageError, setMessageError] = useState("");
-  
-      // Submit button enabled
-      const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
-  
-      // Success message visibility
-      const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  
-      // Validation regexes
-      const nameRegex = /^[A-Za-z\s]+$/;
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
-      // Validation functions
-      const validateName = (value:string) => {
-          if (!value) return "Full name is required"; //check if empty
-          if (value.length < 2)
-          return "Name should be at least 2 characters long"; //check length
-          if (!nameRegex.test(value))
-          return "Name can only contain letters and spaces"; //check alphabet
-          return "";
-      };
-  
-      const validateEmail = (value:string) => {
-          if (!value) return "Email is required"; //check if empty
-          if (!emailRegex.test(value)) return "Please enter a valid email address"; //check format
-          return "";
-      };
-  
-      const validateSubject = (value:string) => {
-          if (!value.trim()) return "Subject is required"; //check if empty
-          return "";
-      };
-  
-      const validateMessage = (value:string) => { 
-          if (!value.trim()) return "Message is required"; //check if empty
-          if (value.trim().length < 10)
-          return "Message must be at least 10 characters long"; //check length
-          return "";
-      };
-  
-      // Check overall form validity, every time there is a change in [name, email, subject, message]
-      useEffect(() => {
-          const isValid =
-          !validateName(name) &&
-          !validateEmail(email) &&
-          !validateSubject(subject) &&
-          !validateMessage(message);
-          setIsSubmitDisabled(!isValid);
-      }, [name, email, subject, message, validateName, validateEmail, validateSubject, validateMessage]);
-  
-      // Handlers for blur events (to show errors)
-      const handleNameBlur = () => setNameError(validateName(name));
-      const handleEmailBlur = () => setEmailError(validateEmail(email));
-      const handleSubjectBlur = () => setSubjectError(validateSubject(subject));
-      const handleMessageBlur = () => setMessageError(validateMessage(message));
-  
-      // On form submit
-      const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
-          e.preventDefault();
-  
-          // Final validation before submit
-          const nError = validateName(name);
-          const eError = validateEmail(email);
-          const sError = validateSubject(subject);
-          const mError = validateMessage(message);
-  
-          setNameError(nError);
-          setEmailError(eError);
-          setSubjectError(sError);
-          setMessageError(mError);
-  
-          if (nError || eError || sError || mError) {
-          return; // don't submit if invalid
-          }
-  
-          // Show success message
-          setShowSuccessMessage(true);
-  
-          // Reset form fields
-          setName("");
-          setEmail("");
-          setSubject("");
-          setMessage("");
-  
-          setTimeout(() => setShowSuccessMessage(false), 1000);
-      };
 
       const [isSubmitDisabled2, setisSubmitDisabled2] = useState(true);
         // Form state
@@ -283,56 +187,155 @@ export default function Homepage() {
           }, 1500);
         };
 
+
+         // Form state
+      const [name, setName] = useState("");
+      const [email, setEmail] = useState("");
+      const [subject, setSubject] = useState("");
+      const [message, setMessage] = useState("");
+  
+      // Error state
+      const [nameError, setNameError] = useState("");
+      const [emailError, setEmailError] = useState("");
+      const [subjectError, setSubjectError] = useState("");
+      const [messageError, setMessageError] = useState("");
+  
+      // Submit button enabled
+      const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+  
+      // Success message visibility
+      const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  
+      // Validation regexes
+      const nameRegex = /^[A-Za-z\s]+$/;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+      // Validation functions
+      const validateName = (value:string) => {
+          if (!value) return "Full name is required"; //check if empty
+          if (value.length < 2)
+          return "Name should be at least 2 characters long"; //check length
+          if (!nameRegex.test(value))
+          return "Name can only contain letters and spaces"; //check alphabet
+          return "";
+      };
+  
+      const validateEmail = (value:string) => {
+          if (!value) return "Email is required"; //check if empty
+          if (!emailRegex.test(value)) return "Please enter a valid email address"; //check format
+          return "";
+      };
+  
+      const validateSubject = (value:string) => {
+          if (!value.trim()) return "Subject is required"; //check if empty
+          return "";
+      };
+  
+      const validateMessage = (value:string) => { 
+          if (!value.trim()) return "Message is required"; //check if empty
+          if (value.trim().length < 10)
+          return "Message must be at least 10 characters long"; //check length
+          return "";
+      };
+  
+      // Check overall form validity, every time there is a change in [name, email, subject, message]
+      useEffect(() => {
+          const isValid =
+          !validateName(name) &&
+          !validateEmail(email) &&
+          !validateSubject(subject) &&
+          !validateMessage(message);
+          setIsSubmitDisabled(!isValid);
+      }, [name, email, subject, message, validateName, validateEmail, validateSubject, validateMessage]);
+  
+      // Handlers for blur events (to show errors)
+      const handleNameBlur = () => setNameError(validateName(name));
+      const handleEmailBlur = () => setEmailError(validateEmail(email));
+      const handleSubjectBlur = () => setSubjectError(validateSubject(subject));
+      const handleMessageBlur = () => setMessageError(validateMessage(message));
+  
+      // On form submit
+      const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+          e.preventDefault();
+  
+          // Final validation before submit
+          const nError = validateName(name);
+          const eError = validateEmail(email);
+          const sError = validateSubject(subject);
+          const mError = validateMessage(message);
+  
+          setNameError(nError);
+          setEmailError(eError);
+          setSubjectError(sError);
+          setMessageError(mError);
+  
+          if (nError || eError || sError || mError) {
+          return; // don't submit if invalid
+          }
+  
+          // Show success message
+          setShowSuccessMessage(true);
+  
+          // Reset form fields
+          setName("");
+          setEmail("");
+          setSubject("");
+          setMessage("");
+  
+          setTimeout(() => setShowSuccessMessage(false), 1000);
+      };
+
   return (
     <div>
       <section className="hero"></section>
 
       <section className="banner">
-          <p>Because when your skin feels good, you feel unstoppable.</p>
+          <p className="container mx-auto px-4">Because when your skin feels good, you feel unstoppable.</p>
       </section>
 
-      <section className="descwhite">
-        <h1 className="text-center">Your Success Stories Inspire Us</h1>
-        <div className="reviews container 2xl:container">
-          <div className="reviews-div gap-2">
-            <h2>Proof That Great Skin is Possible</h2>
-            <p className="italic">&quot;I struggled with cystic acne for years and tried everything. Within 6 weeks of using this routine, my skin completely transformed. The breakouts stopped, my scars faded, and now I wake up confident every single day. This isn&apos;t just skincare - it&apos;s life-changing.&quot; — Sarah M., verified customer</p>
-          </div>
-          <div className="reviews-images">
-            <div className="reviews-div gap-12">
-            <img src="acnebefore.jpg" alt="Acne Before" className="w-[100em] h-auto p-4 mb-0 rounded-lg origin-center transition-transform duration-300 ease-in-out object-cover;"></img>
-            <h2>Before</h2>
+      <section className="desc">
+          <h1 className="text-center container mx-auto px-4">Your Success Stories Inspire Us</h1>
+          <div className="reviews container mx-auto px-4">
+            <div className="reviews-div gap-2">
+              <h2>Proof That Great Skin is Possible</h2>
+              <p className="italic">&quot;I struggled with cystic acne for years and tried everything. Within 6 weeks of using this routine, my skin completely transformed. The breakouts stopped, my scars faded, and now I wake up confident every single day. This isn&apos;t just skincare - it&apos;s life-changing.&quot; — Sarah M., verified customer</p>
             </div>
-            <div className="reviews-div gap-12">
-              <img src="acneafter.jpg" alt="Acne After" className="w-[100em] h-auto p-4 mb-0 rounded-lg origin-center transition-transform duration-300 ease-in-out object-cover;"></img>
-              <h2>After</h2>
+            <div className="reviews-images">
+              <div className="reviews-div">
+                <img src="acnebefore.jpg" alt="Acne Before" className="w-[100em] h-auto p-4 mb-0 rounded-lg origin-center transition-transform duration-300 ease-in-out object-cover;"></img>
+                <h2>Before</h2>
+              </div>
+              <div className="reviews-div">
+                <img src="acneafter.jpg" alt="Acne After" className="w-[100em] h-auto p-4 mb-0 rounded-lg origin-center transition-transform duration-300 ease-in-out object-cover;"></img>
+                <h2>After</h2>
+              </div>
             </div>
           </div>
-        </div>
 
-        <hr></hr>
+          <hr></hr>
 
-        <div className="reviews container 2xl:container">
-          <div className="reviews-images">
-            <div className="reviews-div gap-12">
-            <img src="lipsbefore.jpg" alt="Lips Before" className="w-[100em] h-auto p-4 mb-0 rounded-lg origin-center transition-transform duration-300 ease-in-out object-cover;"></img>
-            <h2>Before</h2>
+          <div className="reviews container mx-auto px-4">
+            <div className="reviews-images">
+              <div className="reviews-div">
+              <img src="lipsbefore.jpg" alt="Lips Before" className="w-[100em] h-auto p-4 mb-0 rounded-lg origin-center transition-transform duration-300 ease-in-out object-cover;"></img>
+              <h2>Before</h2>
+              </div>
+              <div className="reviews-div">
+                <img src="lipsafter.jpg" alt="Lips After" className="w-[100em] h-auto p-4 mb-0 rounded-lg origin-center transition-transform duration-300 ease-in-out object-cover;"></img>
+                <h2>After</h2>
+              </div>
             </div>
-            <div className="reviews-div gap-12">
-              <img src="lipsafter.jpg" alt="Lips After" className="w-[100em] h-auto p-4 mb-0 rounded-lg origin-center transition-transform duration-300 ease-in-out object-cover;"></img>
-              <h2>After</h2>
+            
+            <div className="reviews-div gap-2 container mx-auto px-4">
+              <h2>Results speak louder than promises</h2>
+              <p className="italic">&quot;My lips were constantly cracked and peeling no matter what I used. This lip balm doesn&apos;t just moisturize - it actually heals. After just three days, my lips felt soft and looked healthy again. I&apos;ve been using it for months and will never switch to anything else.&quot; — Jessica L., verified customer</p>
             </div>
           </div>
-          
-          <div className="reviews-div gap-2">
-            <h2>Results speak louder than promises</h2>
-            <p className="italic">&quot;My lips were constantly cracked and peeling no matter what I used. This lip balm doesn&apos;t just moisturize - it actually heals. After just three days, my lips felt soft and looked healthy again. I&apos;ve been using it for months and will never switch to anything else.&quot; — Jessica L., verified customer</p>
-          </div>
-        </div>
+        
       </section>
 
-      <section id="about" className="grid-container">
-          <div className="aboutus desc container 2xl:container">
+      <section id="about" className="grid-container container mx-auto px-4">
+          <div className="aboutus descwhite">
               <h1>About Us</h1>
               <p>We believe everyone deserves to feel confident in their own skin. Founded with a passion for clean beauty and effective skincare, we carefully formulate each product using clinically-proven ingredients that deliver visible results without compromise. Our mission is simple: to create skincare solutions that work for real people with real skin concerns. From our sustainable packaging to our transparent ingredient lists, we&apos;re committed to honesty, quality, and helping you achieve the healthy, glowing skin you deserve.</p>
               <p>Reveal your skin&apos;s natural radiance with science-backed skincare that works!</p>
@@ -344,34 +347,9 @@ export default function Homepage() {
           </div>
       </section>
 
-      <section id="contact" className="descwhite">
-        <h1 className="text-center">Send us a message</h1>
-        <div className="contactus container 2xl:container">
-            <form method="POST" data-netlify="true" id="contactForm" onSubmit={handleSubmit} noValidate>
-            <input className={`inputform ${nameError ? "input-error" : ""}`} type="text" placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)} onBlur={handleNameBlur} pattern="[A-Za-z\s]+" minLength={2} required />
-            {nameError && <span className="error-message">{nameError}</span>}
-            {/*inputform is always applied. input-error is added only if nameError is truthy*/}
-
-            <input className={`inputform ${emailError ? "input-error" : ""}`} type="email" id="email" placeholder="your.email@example.com" value={email} onChange={(e) => setEmail(e.target.value)} onBlur={handleEmailBlur} required />
-            {emailError && <span className="error-message">{emailError}</span>}
-
-            <input type="text" placeholder="Subject" className={`inputform ${subjectError ? "input-error" : ""}`} value={subject} onChange={(e) => setSubject(e.target.value)} onBlur={handleSubjectBlur} required />
-            {subjectError && <span className="error-message">{subjectError}</span>}
-
-            <textarea className={`inputform formtextarea ${ messageError ? "input-error" : ""}`} id="message" placeholder="Tell us what you're looking for..." value={message} onChange={(e) => setMessage(e.target.value)} onBlur={handleMessageBlur} minLength={10} required />
-            {messageError && <span className="error-message">{messageError}</span>}
-
-            <button className="btn send" type="submit" disabled={isSubmitDisabled}><i className="fa-regular fa-paper-plane text-[#fff8f0]"></i> Send</button>
-            {/*the button will be disabled if isSubmitDisabled = true*/}
-            {showSuccessMessage && ( <div id="contactsuccessMessage" className="text-center mt-4 text-green-600 font-semibold">Message sent successfully!</div>)}
-            {/*when showSuccessMessage true, set message to message sent successfully and display*/}
-            </form>
-        </div> 
-      </section>
-
       <section id="products" className="desc">
-          <h1 className="text-center">What Everyone&apos;s Raving About</h1>
-          <div className="product container">
+          <h1 className="text-center  container mx-auto px-4">What Everyone&apos;s Raving About</h1>
+          <div className="product  container mx-auto px-4">
               <div className="cards">
                   <div className="product-images"><img src="faceoil.jpg" alt="Face Oil"></img></div>
                   <div className="product-desc">
@@ -430,7 +408,7 @@ export default function Homepage() {
           <Link href="#products"><button className="btn centerbtn">View More</button></Link>
       </section>
 
-      <section id="delivery" className="descwhite">
+      <section id="delivery" className="descwhite  container mx-auto px-4">
             <h1 className="text-center">Order Details</h1>
             <div className="delivery container 2xl:container">
                 <form id="deliveryForm" className="w-full" method="POST" data-netlify="true" onSubmit={handleSubmit2} noValidate>
@@ -498,6 +476,30 @@ export default function Homepage() {
             </div> 
         </section>
 
+      <section id="contact" className="desc">
+        <h1 className="text-center container mx-auto px-4">Send us a message</h1>
+        <div className="contactus container mx-auto px-4">
+            <form method="POST" data-netlify="true" id="contactForm" onSubmit={handleSubmit} noValidate>
+            <input className={`inputform ${nameError ? "input-error" : ""}`} type="text" placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)} onBlur={handleNameBlur} pattern="[A-Za-z\s]+" minLength={2} required />
+            {nameError && <span className="error-message">{nameError}</span>}
+            {/*inputform is always applied. input-error is added only if nameError is truthy*/}
+
+            <input className={`inputform ${emailError ? "input-error" : ""}`} type="email" id="email" placeholder="your.email@example.com" value={email} onChange={(e) => setEmail(e.target.value)} onBlur={handleEmailBlur} required />
+            {emailError && <span className="error-message">{emailError}</span>}
+
+            <input type="text" placeholder="Subject" className={`inputform ${subjectError ? "input-error" : ""}`} value={subject} onChange={(e) => setSubject(e.target.value)} onBlur={handleSubjectBlur} required />
+            {subjectError && <span className="error-message">{subjectError}</span>}
+
+            <textarea className={`inputform formtextarea ${ messageError ? "input-error" : ""}`} id="message" placeholder="Tell us what you're looking for..." value={message} onChange={(e) => setMessage(e.target.value)} onBlur={handleMessageBlur} minLength={10} required />
+            {messageError && <span className="error-message">{messageError}</span>}
+
+            <button className="btn send" type="submit" disabled={isSubmitDisabled}><i className="fa-regular fa-paper-plane text-[#fff8f0]"></i> Send</button>
+            {/*the button will be disabled if isSubmitDisabled = true*/}
+            {showSuccessMessage && ( <div id="contactsuccessMessage" className="text-center mt-4 text-green-600 font-semibold">Message sent successfully!</div>)}
+            {/*when showSuccessMessage true, set message to message sent successfully and display*/}
+            </form>
+        </div> 
+      </section>
     </div>
     
 

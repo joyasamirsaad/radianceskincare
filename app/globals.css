@@ -30,7 +30,7 @@ header {
 }
 
 .header-top {
-    @apply flex justify-between items-center p-2 h-20;
+    @apply flex justify-between items-center py-2 h-20;
 }
 
 .social-icons a {
@@ -38,7 +38,7 @@ header {
 }
 
 .banner {
-    @apply bg-[#3E5C50] text-[#FFF8F0] flex flex-col justify-center items-center text-center break-words p-5 min-h-[10vh] break-words;
+    @apply bg-[#3E5C50] text-[#FFF8F0] flex flex-col justify-center items-center text-center break-words py-5 min-h-[10vh] break-words;
     font-family: 'Outfit', sans-serif;
 }
 
@@ -55,15 +55,15 @@ header {
 }
 
 .navbar ul {
-    @apply list-none px-5 py-2.5 flex justify-center text-center;
+    @apply list-none py-2.5 flex justify-center text-center;
 }
 
 .navbar li {
-    @apply mx-4 my-0;
+    @apply mx-4;
 }
  
 .navbar a {
-    @apply text-[#3E5C50] no-underline px-2.5 py-1 transition-colors duration-300 ease-in-out;
+    @apply text-[#3E5C50] no-underline py-1 transition-colors duration-300 ease-in-out;
 }
 
 .navbar a:hover {
@@ -71,7 +71,7 @@ header {
 }
 
 .hamburger {
-    @apply hidden flex-col cursor-pointer px-5 py-2.5 justify-center items-center border-b border-[#3E5C50];
+    @apply hidden flex-col cursor-pointer py-2.5 justify-center items-center /*border-b border-[#3E5C50]*/;
 }
 
 .hamburger span {
@@ -90,9 +90,9 @@ header {
     @apply -rotate-45 relative -top-2;
 }
 
-.content {
+/*.content {
     @apply p-8 max-w-6xl mx-auto;
-}
+}*/
 
 @media screen and (max-width: 1080px) {
     .hamburger {
@@ -102,7 +102,7 @@ header {
         @apply flex-col;
     }
     .navbar ul {
-        @apply hidden flex-col order-2 m-0;
+        @apply hidden flex-col order-2;
     }
 
     .navbar ul.active {
@@ -110,11 +110,11 @@ header {
     }
 
     .navbar li {
-        @apply my-4 mx-0;
+        @apply my-4;
     }
 
     .navbar a {
-        @apply text-lg block px-5 py-2.5;
+        @apply text-lg block py-2.5;
     }
 }
 
@@ -123,12 +123,12 @@ header {
 }
 
 .grid-container {
-    @apply grid grid-cols-[3fr_1fr] gap-12 m-12 items-stretch;
+    @apply grid grid-cols-[3fr_1fr] my-2 gap-4;
 }
 
 @media screen and (max-width: 1080px) {
     .grid-container {
-        @apply flex flex-col gap-8;
+        @apply flex flex-col;
     }
 } 
 
@@ -141,12 +141,12 @@ header {
 }
 
 .desc {
-    @apply bg-[#FFF8F0] text-[#2B2B2B] p-5 rounded-lg text-xl;
+    @apply bg-[#FFF8F0] text-[#2B2B2B] py-5 text-xl;
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .descwhite {
-    @apply text-[#2B2B2B] p-5 rounded-lg text-xl;
+    @apply text-[#2B2B2B] py-5 text-xl;
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
@@ -222,7 +222,7 @@ header {
 }
 
 .inputform {
-    @apply rounded-full border-[0.17em] border-[#7BA487] w-full h-12 box-border p-4;
+    @apply rounded-xl border-[0.17em] border-[#7BA487] w-full h-12 box-border p-4;
 }
 
 .inputform:focus {
@@ -252,7 +252,7 @@ form:invalid .btn {
 }
 
 .credit:disabled {
-    @apply bg-gray-300 cursor-not-allowed pointer-events-none;
+    @apply bg-gray-100 cursor-not-allowed pointer-events-none;
 }
 
 .hidden {
@@ -272,9 +272,12 @@ form:invalid .btn {
 }
 
 footer {
-    @apply bg-[#3E5C50] flex flex-row justify-center items-center gap-8 flex-wrap px-5 py-2.5 mt-12;
+    @apply bg-[#3E5C50] flex flex-row justify-center items-center gap-8 flex-wrap py-2.5 mt-12;
 }
 
+.footer-div {
+    @apply flex flex-row justify-center items-start gap-8 flex-wrap;
+}
 .footersections {
     @apply flex flex-col items-center text-center box-border break-words bg-[#3E5C50] text-[#FFF8F0] max-w-sm text-base break-words;
 }
@@ -296,7 +299,7 @@ footer i {
 }
 
 .deliverysections {
-    @apply border-2 border-[#3E5C50] rounded-lg p-5 my-5 bg-white;
+    @apply border-2 border-[#3E5C50] rounded-xl p-5 my-5 bg-white;
 }
 
 .deliverysections legend {
@@ -304,7 +307,7 @@ footer i {
 }
 
 .radio-label {
-    @apply flex items-center cursor-pointer p-2.5 rounded-lg transition-colors duration-300 ease-in-out;
+    @apply flex items-center cursor-pointer p-2.5 rounded-xl transition-colors duration-300 ease-in-out;
 }
 
 .radio-label:hover {
@@ -316,11 +319,11 @@ footer i {
     accent-color: #3E5C50;
 }
 
-.container {
+/*.container {
     @apply 2xl:container w-full max-w-6xl mx-auto px-5 justify-center;
-}
+}*/
 
-@media (max-width: 1280px) {
+/*@media (max-width: 1280px) {
     .container {
         @apply max-w-6xl;
     }
@@ -336,12 +339,12 @@ footer i {
     .container {
         @apply max-w-[90%];
     }
-}
+}*/
 
 .reviews , .reviews-images{
     @apply flex flex-row justify-center items-center gap-12;
 }
-@media (max-width: 768px) {
+@media (max-width: 1500px) {
     .reviews {
         @apply flex flex-col;
     }

@@ -48,7 +48,7 @@ export default function Header() {
 
   return (
     <header>
-        <div className="header-top">
+        <div className="header-top container mx-auto px-4">
             <img className="logo" src="/logo.png" alt="radiance logo"></img>
             <div className="title">Radiance</div>
             <div className="social-icons">
@@ -57,19 +57,22 @@ export default function Header() {
             </div>
         </div>
         <nav className="navbar">
-            <div className="hamburger">
+            <div className="container mx-auto px-4">
+                <div className="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+                </div>
 
-            <ul>
-                <li><Link href="/">Home</Link></li>
-                <li><Link href="#about">About Us</Link></li>
-                <li><Link href="#contact">Contact Us</Link></li>
-                <li><Link href="#products">Products</Link></li>
-                <li><Link href="#delivery">Delivery</Link></li>
-            </ul>
+                <ul>
+                    <li><Link href="/">Home</Link></li>
+                    <li><Link href="#about">About Us</Link></li>
+                    <li><Link href="#contact">Contact Us</Link></li>
+                    <li><Link href="#products">Products</Link></li>
+                    <li><Link href="#delivery">Delivery</Link></li>
+                </ul>
+            </div>
+            
         </nav>
     </header>
   );
