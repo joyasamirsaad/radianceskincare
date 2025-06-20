@@ -6,12 +6,15 @@ export default function Header() {
     useEffect(() => {
         const hamburger = document.querySelector('.hamburger') as HTMLElement | null;
         const navMenu = document.querySelector('.navbar ul') as HTMLElement | null;
+        const overlay = document.getElementById('menu-overlay');
 
         if (!hamburger || !navMenu) return;
 
         const toggleMenu = () => {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+        overlay?.classList.toggle('active');
+        overlay?.classList.remove('active');
         };
 
         const closeMenu = () => {
@@ -74,6 +77,7 @@ export default function Header() {
             </div>
             
         </nav>
+        <div id="menu-overlay" className="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
     </header>
   );
 }

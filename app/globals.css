@@ -51,7 +51,7 @@ header {
 }
 
 .navbar {
-    @apply bg-[#FFF4E6];
+    @apply bg-[#FFF4E6] relative;
 }
 
 .navbar ul {
@@ -93,6 +93,9 @@ header {
 /*.content {
     @apply p-8 max-w-6xl mx-auto;
 }*/
+#menu-overlay.active {
+    @apply block;
+}
 
 @media screen and (max-width: 1080px) {
     .hamburger {
@@ -102,7 +105,7 @@ header {
         @apply flex-col;
     }
     .navbar ul {
-        @apply hidden flex-col order-2;
+        @apply hidden flex-col order-2 absolute top-full left-0 w-full bg-[#FFF4E6] z-40 shadow-md;
     }
 
     .navbar ul.active {
@@ -350,11 +353,11 @@ footer i {
     }
 }
 
-@media (max-width: 500px) {
+/*@media (max-width: 500px) {
     .reviews-images {
         @apply flex flex-col;
     }
-}
+}*/
 
 .reviews-div {
     @apply flex flex-col justify-center items-center;
