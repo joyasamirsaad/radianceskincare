@@ -47,7 +47,7 @@ export default function Header() {
     }, []);
 
   return (
-    <header>
+    <header id="home" className="sticky top-0 z-50 bg-white shadow-md">
         <div className="header-top container mx-auto px-4">
             <img className="logo" src="/logo.png" alt="radiance logo"></img>
             <div className="title">Radiance</div>
@@ -65,11 +65,11 @@ export default function Header() {
                 </div>
 
                 <ul>
-                    <li><Link href="/">Home</Link></li>
+                    <li><Link href="#home">Home</Link></li>
                     <li><Link href="#about">About Us</Link></li>
-                    <li><Link href="#contact">Contact Us</Link></li>
                     <li><Link href="#products">Products</Link></li>
                     <li><Link href="#delivery">Delivery</Link></li>
+                    <li><Link href="#contact">Contact Us</Link></li>
                 </ul>
             </div>
             
