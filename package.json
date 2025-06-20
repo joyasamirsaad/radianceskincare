@@ -1,0 +1,35 @@
+{
+  "name": "radiance",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@netlify/next": "^1.4.9",
+    "next": "15.3.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.10",
+    "@tailwindcss/vite": "^4.1.10",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "9.29.0",
+    "eslint-config-next": "15.3.3",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.10",
+    "typescript": "^5",
+    "vite": "^6.3.5"
+  },
+  "engines": {
+  "node": "20.14.0",
+  "npm": "10.x"
+},
+"build": "react-scripts build"
+}
